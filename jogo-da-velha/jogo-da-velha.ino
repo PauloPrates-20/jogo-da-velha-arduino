@@ -1,10 +1,9 @@
 #include <Keypad.h>             // biblioteca do teclado matricial
 #include <LiquidCrystal_I2C.h>  // biblioteca do display lcd i2c
-#include <avr/wdt.h>
 
 // variáveis de hardware
 
-#define DISPLAY_ADRESS 0x27    // endereço do display (0x38 para simular 0x27 no circuito)
+#define DISPLAY_ADRESS 0x38    // endereço do display (0x38 para simular 0x27 no circuito)
 #define DISPLAY_ROWS 4         // linhas do display
 #define DISPLAY_CHARACTERS 20  // caracteres por linha do display
 #define KEYPAD_ROWS 4          // qunatidade linhas do teclado
@@ -37,6 +36,8 @@ String tabuleiro[3][3]{ quadrado, quadrado, quadrado,
 bool andamento = true;                                                // true = em andamento, false = finalizado
 bool vitoriaX, vitoriaO, velha = false;                               // possíveis estados finais do jogo
 bool linhaX, colunaX, diagonalX, linhaO, colunaO, diagonalO = false;  // possíveis combinações de vitória
+
+void (*resetarJogo) (void) = 0; // função de reset do jogo
 
 void setup() {
   display.begin();      // inicializa o display
@@ -158,12 +159,6 @@ void atualizarEspaco(int linha, int coluna) {
     turno++; // incrementa o contador de turnos
     simboloAtual = simbolos[turno % 2]; // atualiza o simbolo de acordo com o turno
   }
-}
-
-// função para resetar o jogo para o estado inicial
-void resetarJogo() {
-  wdt_enable(WDTO_15MS);
-  while(true) { }
 }
 
 // função para verificar o vencedor do jogo;
