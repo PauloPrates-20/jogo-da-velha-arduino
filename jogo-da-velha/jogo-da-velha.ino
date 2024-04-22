@@ -3,7 +3,7 @@
 
 // variáveis de hardware
 
-#define DISPLAY_ADRESS 0x38    // endereço do display (0x38 para simular 0x27 no circuito)
+#define DISPLAY_ADRESS 0x27    // endereço do display (0x38 para simular 0x27 no circuito)
 #define DISPLAY_ROWS 4         // linhas do display
 #define DISPLAY_CHARACTERS 20  // caracteres por linha do display
 #define KEYPAD_ROWS 4          // qunatidade linhas do teclado
