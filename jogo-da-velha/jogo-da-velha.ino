@@ -3,19 +3,18 @@
 
 // variáveis de hardware
 
-#define DISPLAY_ADRESS 0x27    // endereço do display (0x38 para simular 0x27 no circuito)
+#define DISPLAY_ADRESS 0x27    // substituir pelo endereço i2c do seu display
 #define DISPLAY_ROWS 4         // linhas do display
 #define DISPLAY_CHARACTERS 20  // caracteres por linha do display
-#define KEYPAD_ROWS 4          // qunatidade linhas do teclado
-#define KEYPAD_COLUMNS 4       // quantidade colunas do teclado
+#define KEYPAD_ROWS 3          // qunatidade linhas do teclado
+#define KEYPAD_COLUMNS 3       // quantidade colunas do teclado
 
-byte keypadRowPins[KEYPAD_ROWS] = { 2, 3, 4, 5 };        // pinos associados às linhas do teclado
-byte keypadColumnPins[KEYPAD_COLUMNS] = { 6, 7, 8, 9 };  // pinos associados às colunas do teclado
+byte keypadRowPins[KEYPAD_ROWS] = { 2, 3, 4 };        // pinos associados às linhas do teclado
+byte keypadColumnPins[KEYPAD_COLUMNS] = { 6, 7, 8 };  // pinos associados às colunas do teclado
 // mapeamento das teclas do teclado
-char keypadKeyMap[KEYPAD_ROWS][KEYPAD_COLUMNS] = { '0', '1', '2', ' ',
-                                                   '3', '4', '5', ' ',
-                                                   '6', '7', '8', ' ',
-                                                   ' ', ' ', ' ', ' ' };
+char keypadKeyMap[KEYPAD_ROWS][KEYPAD_COLUMNS] = { '0', '1', '2',
+                                                   '3', '4', '5',
+                                                   '6', '7', '8'}
 // instanciamento do teclado
 Keypad keypad = Keypad(makeKeymap(keypadKeyMap), keypadRowPins, keypadColumnPins, KEYPAD_ROWS, KEYPAD_COLUMNS);
 
