@@ -14,7 +14,7 @@ byte keypadColumnPins[KEYPAD_COLUMNS] = { 6, 7, 8 };  // pinos associados às co
 // mapeamento das teclas do teclado
 char keypadKeyMap[KEYPAD_ROWS][KEYPAD_COLUMNS] = { '0', '1', '2',
                                                    '3', '4', '5',
-                                                   '6', '7', '8'}
+                                                   '6', '7', '8'};
 // instanciamento do teclado
 Keypad keypad = Keypad(makeKeymap(keypadKeyMap), keypadRowPins, keypadColumnPins, KEYPAD_ROWS, KEYPAD_COLUMNS);
 
@@ -27,6 +27,8 @@ String quadrado = String(quadradoCode);
 
 int turno = 1;                              // contador de turnos
 String simbolos[2] = { "O", "X" };          // símbolos do jogo
+String jogadores[2] = { "1", "2" };          // jogadores
+String jogadorAtual = jogadores[turno % 2]; // jogador atual
 String simboloAtual = simbolos[turno % 2];  // símbolo a ser desenhado na tela
 // mapeamento do tabuleiro
 String tabuleiro[3][3]{ quadrado, quadrado, quadrado,
@@ -39,7 +41,7 @@ bool linhaX, colunaX, diagonalX, linhaO, colunaO, diagonalO = false;  // possív
 void (*resetarJogo) (void) = 0; // função de reset do jogo
 
 void setup() {
-  display.begin();      // inicializa o display
+  display.init();      // inicializa o display
   display.backlight();  // liga a iluminação de backlight do display
 
   desenharTabuleiro();  // exibe o grid na tela
@@ -105,7 +107,7 @@ void loop() {
 
 // função para desenhar o tabuleiro no display lcd
 void desenharTabuleiro() {
-  String texto = "Turno: " + simboloAtual;  // texto do cabeçalho
+  String texto = "Turno: Jogador " + jogadorAtual;  // texto do cabeçalho
   display.clear();
   display.setCursor(0, 0);
   display.print(texto);
@@ -121,13 +123,13 @@ void desenharTabuleiro() {
 
 // função para desenha a tela de fim de jogo
 void telaFinal() {
-  String texto = "Velha";
+  String texto = "Empate";
 
   if(vitoriaO) {
-    texto = "O Venceu!";
+    texto = "Jogador 2 Venceu!";
   }
   else if(vitoriaX) {
-    texto = "X Venceu!";
+    texto = "Jogador 1 Venceu!";
   }
 
   display.clear();
