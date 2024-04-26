@@ -27,7 +27,7 @@ String quadrado = String(quadradoCode);
 
 int turno = 1;                              // contador de turnos
 String simbolos[2] = { "O", "X" };          // símbolos do jogo
-String jogadores[2] = { "1", "2" };          // jogadores
+String jogadores[2] = { "2", "1" };          // jogadores
 String jogadorAtual = jogadores[turno % 2]; // jogador atual
 String simboloAtual = simbolos[turno % 2];  // símbolo a ser desenhado na tela
 // mapeamento do tabuleiro
