@@ -159,6 +159,7 @@ void atualizarEspaco(int linha, int coluna) {
     tabuleiro[linha][coluna] = simboloAtual;
     turno++; // incrementa o contador de turnos
     simboloAtual = simbolos[turno % 2]; // atualiza o simbolo de acordo com o turno
+    jogadorAtual = jogadores[turno % 2]; // atualiza o jogador de acordo com o turno
   }
 }
 
