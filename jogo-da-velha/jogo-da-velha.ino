@@ -123,7 +123,7 @@ void desenharTabuleiro() {
 
 // função para desenha a tela de fim de jogo
 void telaFinal() {
-  String texto = "Empate";
+  String texto = "Empate!";
 
   if(vitoriaO) {
     texto = "Jogador 2 Venceu!";
@@ -136,8 +136,8 @@ void telaFinal() {
 
   display.setCursor(centralizarTexto(texto), 1);
   display.print(texto);
-  display.setCursor(centralizarTexto("Reiniciando..."), 2);
-  display.print("Reiniciando...");
+  display.setCursor(centralizarTexto("Reiniciando!"), 2);
+  display.print("Reiniciando!");
   delay(2000);
   resetarJogo();
 }
